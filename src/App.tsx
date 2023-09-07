@@ -19,6 +19,11 @@ function App () {
     setSortByCountry(!sortByCountry)
   }
 
+  const handleDeleteUser = (loginId: string) => {
+    const filteredUsers = users.filter(user => user.login.uuid !== loginId)
+    setUsers(filteredUsers)
+  }
+
   useEffect(() => {
     fetch(APIURL)
       .then(async res => await res.json())
@@ -44,7 +49,11 @@ function App () {
         </button>
       </header>
       <main>
-        <UsersList users={sortedUsers} showRowColors={showRowColors}/>
+        <UsersList
+          deleteUser={handleDeleteUser}
+          users={sortedUsers}
+          showRowColors={showRowColors}
+        />
       </main>
     </>
   )
