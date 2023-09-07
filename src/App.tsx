@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { useEffect, useState } from 'react'
 import './App.css'
 import { type User } from './types'
@@ -7,6 +8,11 @@ const APIURL = 'https://randomuser.me/api/?results=100'
 
 function App () {
   const [users, setUsers] = useState<User[]>([])
+  const [showRowColors, setShowRowColors] = useState(false)
+
+  const toggleColors = () => {
+    setShowRowColors(!showRowColors)
+  }
 
   useEffect(() => {
     fetch(APIURL)
@@ -20,7 +26,14 @@ function App () {
   return (
     <>
       <h1>React Typescript Proficiency Test</h1>
-      <UsersList users={users} />
+      <header>
+        <button onClick={toggleColors}>
+          Show Row Colors
+        </button>
+      </header>
+      <main>
+        <UsersList users={users} showRowColors={showRowColors}/>
+      </main>
     </>
   )
 }

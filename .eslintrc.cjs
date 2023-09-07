@@ -37,5 +37,6 @@ module.exports = {
       "jsx-quotes": ["error", "prefer-single"],
       "@typescript-eslint/array-type": "off",
       "@typescript-eslint/method-signature-style": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off"
   }
 }
