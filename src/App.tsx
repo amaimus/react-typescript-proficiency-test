@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { type User } from './types'
 import { UsersList } from './components/UsersList'
@@ -10,6 +10,7 @@ function App () {
   const [users, setUsers] = useState<User[]>([])
   const [showRowColors, setShowRowColors] = useState(false)
   const [sortByCountry, setSortByCountry] = useState(false)
+  const originalUsers = useRef<User[]>([])
 
   const toggleColors = () => {
     setShowRowColors(!showRowColors)
@@ -24,11 +25,16 @@ function App () {
     setUsers(filteredUsers)
   }
 
+  const resetInitialState = () => {
+    setUsers(originalUsers.current)
+  }
+
   useEffect(() => {
     fetch(APIURL)
       .then(async res => await res.json())
       .then(res => {
         setUsers(res.results)
+        originalUsers.current = res.results
       })
       .catch(err => { console.error(err) })
   }, [])
@@ -46,6 +52,9 @@ function App () {
         </button>
         <button onClick={toggleSortByCountry}>
           Sort by Country
+        </button>
+        <button onClick={resetInitialState}>
+          Reset
         </button>
       </header>
       <main>
