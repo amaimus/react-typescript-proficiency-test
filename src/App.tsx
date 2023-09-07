@@ -4,13 +4,14 @@ import './App.css'
 import { type User } from './types'
 import { UsersList } from './components/UsersList'
 
-const APIURL = 'https://randomuser.me/api/?results=100'
+const API_URL = 'https://randomuser.me/api/?results=100'
 
 function App () {
   const [users, setUsers] = useState<User[]>([])
   const [showRowColors, setShowRowColors] = useState(false)
   const [sortByCountry, setSortByCountry] = useState(false)
   const originalUsers = useRef<User[]>([])
+  const [filterCountry, setFilterCountry] = useState<string | null>(null)
 
   const toggleColors = () => {
     setShowRowColors(!showRowColors)
@@ -30,7 +31,7 @@ function App () {
   }
 
   useEffect(() => {
-    fetch(APIURL)
+    fetch(API_URL)
       .then(async res => await res.json())
       .then(res => {
         setUsers(res.results)
@@ -39,9 +40,13 @@ function App () {
       .catch(err => { console.error(err) })
   }, [])
 
-  const sortedUsers = sortByCountry
-    ? users.toSorted((a, b) => a.location.country.localeCompare(b.location.country))
+  const filteredUsers = filterCountry
+    ? users.filter(user => user.location.country.toLowerCase().includes(filterCountry.toLowerCase()))
     : users
+
+  const sortedUsers = sortByCountry
+    ? filteredUsers.toSorted((a, b) => a.location.country.localeCompare(b.location.country))
+    : filteredUsers
 
   return (
     <>
@@ -56,6 +61,7 @@ function App () {
         <button onClick={resetInitialState}>
           Reset
         </button>
+        <input type='text' onChange={(e) => { setFilterCountry(e.target.value) }} placeholder='Filter by ...'/>
       </header>
       <main>
         <UsersList
