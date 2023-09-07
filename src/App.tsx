@@ -9,9 +9,14 @@ const APIURL = 'https://randomuser.me/api/?results=100'
 function App () {
   const [users, setUsers] = useState<User[]>([])
   const [showRowColors, setShowRowColors] = useState(false)
+  const [sortByCountry, setSortByCountry] = useState(false)
 
   const toggleColors = () => {
     setShowRowColors(!showRowColors)
+  }
+
+  const toggleSortByCountry = () => {
+    setSortByCountry(!sortByCountry)
   }
 
   useEffect(() => {
@@ -23,6 +28,10 @@ function App () {
       .catch(err => { console.error(err) })
   }, [])
 
+  const sortedUsers = sortByCountry
+    ? users.toSorted((a, b) => a.location.country.localeCompare(b.location.country))
+    : users
+
   return (
     <>
       <h1>React Typescript Proficiency Test</h1>
@@ -30,9 +39,12 @@ function App () {
         <button onClick={toggleColors}>
           Show Row Colors
         </button>
+        <button onClick={toggleSortByCountry}>
+          Sort by Country
+        </button>
       </header>
       <main>
-        <UsersList users={users} showRowColors={showRowColors}/>
+        <UsersList users={sortedUsers} showRowColors={showRowColors}/>
       </main>
     </>
   )
