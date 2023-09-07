@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { type User } from './types'
+import { UsersList } from './components/UsersList'
 
 const APIURL = 'https://randomuser.me/api/?results=100'
 
@@ -19,7 +20,7 @@ function App () {
   return (
     <>
       <h1>React Typescript Proficiency Test</h1>
-      {JSON.stringify(users)}
+      <UsersList users={users} />
     </>
   )
 }
