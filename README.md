@@ -1,8 +1,6 @@
 # Technical test with TypeScript and React
 
-
-https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/9493a7c1-2d0e-49c1-9a5f-9d8fcfc13731
-
+https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/6771f85a-9ef3-4034-bbb1-28d843a1ee69
 
 This is a technical test for a European company for a salary of €55,000/year.
 
