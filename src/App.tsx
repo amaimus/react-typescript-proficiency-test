@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 import { type User } from './types'
 import { UsersList } from './components/UsersList'
@@ -40,13 +40,19 @@ function App () {
       .catch(err => { console.error(err) })
   }, [])
 
-  const filteredUsers = filterCountry
-    ? users.filter(user => user.location.country.toLowerCase().includes(filterCountry.toLowerCase()))
-    : users
+  const filteredUsers = useMemo(() => {
+    return filterCountry
+      ? users.filter(user => user.location.country.toLowerCase().includes(filterCountry.toLowerCase()))
+      : users
+  }, [users, filterCountry])
 
-  const sortedUsers = sortByCountry
-    ? filteredUsers.toSorted((a, b) => a.location.country.localeCompare(b.location.country))
-    : filteredUsers
+  const sortedUsers = useMemo(() => {
+    return sortByCountry
+      ? filteredUsers.toSorted(
+        (a, b) => a.location.country.localeCompare(b.location.country)
+      )
+      : filteredUsers
+  }, [filteredUsers, sortByCountry])
 
   return (
     <>
