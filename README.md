@@ -1,5 +1,9 @@
 # Technical test with TypeScript and React
 
+
+https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/9493a7c1-2d0e-49c1-9a5f-9d8fcfc13731
+
+
 This is a technical test for a European company for a salary of €55,000/year.
 
 The goal of this technical test is to create an app similar to the one provided at this link: https://midu-react-11.surge.sh/. To achieve this, you must use the API provided by https://randomuser.me/.
