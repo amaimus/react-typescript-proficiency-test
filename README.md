@@ -1,4 +1,5 @@
 # Technical test with TypeScript and React
+![image](https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/9b40483d-8796-476c-a366-6e667920c1be)
 
 https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/6771f85a-9ef3-4034-bbb1-28d843a1ee69
 
