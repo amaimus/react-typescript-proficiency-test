@@ -1,6 +1,6 @@
 # Technical test with TypeScript and React.
 
-🟥 **Spanish**
+🟥 **Español**
 
 Prueba técnica para Desarrolladores de React y TypeScript en una empresa europea. Utilizamos el API de randomuser.me para listar datos de usuarios, permitimos filtrar por país o columna, borrar usuarios y restablecer el estado inicial de la aplicación. También hemos implementado un manejo de errores y evitamos reordenar los datos cuando se cambia el filtro por país.
 
