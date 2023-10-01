@@ -8,9 +8,7 @@ Prueba técnica para Desarrolladores de React y TypeScript en una empresa europe
 
 Technical test for React and TypeScript Developers in a European company. We use the randomuser.me API to list user data, allow filtering by country or column, delete users and restore the initial state of the application. We have also implemented error handling and avoided reordering data when changing the country filter.
 
-![react-typescript-proficiency-test](https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/d5a76a18-1420-4d9b-9171-f19b1a8311fe)
-
-https://github.com/amaimus/react-typescript-proficiency-test/assets/35699916/6771f85a-9ef3-4034-bbb1-28d843a1ee69
+<img src='public/react-typescript-proficiency-test.png'/>
 
 --- 
 
